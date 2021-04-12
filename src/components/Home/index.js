@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Card from "../Card";
 import "../Home/index.css";
 const Index = () => {
   const [searchValue, setSearch] = useState("");
@@ -18,14 +19,16 @@ const Index = () => {
           // console.log(result)
           setItems(result.results);
         })
-        .catch((error) => console.log("error", error));
+        // .catch((error) => 
+        // console.log("error", error)
+        // );
     }
 
     //   return () => {
     //       cleanup
     //   }
   }, [searchValue]);
-  console.log(fetchedItems);
+//   console.log(fetchedItems);
   return (
     <div>
       <div className="img-container">
@@ -37,14 +40,14 @@ const Index = () => {
           <button className="btn btn-success">Search</button>
         </div>
       </div>
-      <div>
-        <ol>
+      <div style={{display:"flex",justifyContent:"space-around",flexWrap:"wrap"}}>
+        
           {fetchedItems !== undefined
             ? fetchedItems.map((item, index) => {
-                if (index < 5) return <p>{item.original_title}</p>;
+                return <Card id={index} item={item}/>
               })
             : null}
-        </ol>
+        
       </div>
     </div>
   );
