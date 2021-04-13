@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Card from "../Card";
 import "../Home/index.css";
-const Index = () => {
+const Index = ({watchedList,setWatched}) => {
   const [searchValue, setSearch] = useState("");
   const [fetchedItems, setItems] = useState([]);
   const search = (e) => {
     setItems([]);
     setSearch(e.target.value);
-  };
+  }; 
+//   console.log(watchedList)
   React.useEffect(() => {
     if (searchValue.length > 0) {
       fetch(
@@ -44,7 +45,7 @@ const Index = () => {
         
           {fetchedItems !== undefined
             ? fetchedItems.map((item, index) => {
-                return <Card id={index} item={item}/>
+                return <Card watchedList={watchedList} setWatched={setWatched}  id={item.id} item={item}/>
               })
             : null}
         

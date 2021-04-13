@@ -1,9 +1,13 @@
-import React from 'react'
-
-const index = () => {
+import React from 'react';
+import "../WatchList/index.css"
+import Watchcard from "../Watchcard/";
+const index = ({watchedList}) => {
     return (
-        <div>
-            <h1>WatchList</h1>
+        <div className="watchList-container">
+            {/* <h1>WatchList</h1> */}
+            {watchedList.map((item,id)=>{
+                return <Watchcard item={item}/>
+            })}
         </div>
     )
 }
